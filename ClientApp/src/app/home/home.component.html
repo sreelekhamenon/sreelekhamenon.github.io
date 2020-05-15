@@ -1,0 +1,21 @@
+<h2>String Comparer</h2>
+
+<form  #homeForm="ngForm">
+    <div class="form-group">
+      <label for="name">Text</label>
+      <input type="text" class="form-control" id="inputText" required minlength="1" [(ngModel)]="inputText" name="inputText" #inputTextModel="ngModel">
+      <div [hidden]="inputTextModel.valid || inputTextModel.pristine" class="alert alert-danger">Input text is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="subText">Sub Text</label>
+      <input type="text" class="form-control" id="subText" required minlength="1" [(ngModel)]="subText" name="subText" #subTextModel="ngModel">
+      <div [hidden]="subTextModel.valid || subTextModel.pristine" class="alert alert-danger">Sub text is required</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="getIndexOfSubtext()" [disabled]="!homeForm.form.valid">Get Index Of Subtext</button>
+
+  </form>
+<div *ngIf="compareResult.IsValid == false">Error</div>
+
+<div aria-live="polite" *ngIf="compareResult.IsValid" >Result: <strong>{{ compareResult.Description}}</strong></div>
