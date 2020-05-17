@@ -1,5 +1,5 @@
 import { Component,Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpParams,HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,20 +16,35 @@ export class HomeComponent {
   }
 
   public getIndexOfSubtext() {
-    this.compareResult["Description"] = this.subText + this.inputText;
-    this.compareResult["IsValid"] = true
-    
-    this.inputText = this.inputText.trim();
-    this.subText = this.subText.trim();
-    // this.http.get<CompareResult>(this.baseUrl + 'weatherforecast').subscribe(result => {
-    //   this.compareResult = result[0].result;
-    // }, error => console.error(error));
+    this.compareResult.Description = "Processing...";
+    this.compareResult.IsValid = null;
+
+    this.compareResult.QueryText = this.inputText.trim();
+    this.compareResult.QuerySubText = this.subText.trim();
+
+    let params = new HttpParams();
+    params = params.append('inputText', this.compareResult.QueryText);
+    params = params.append('subText', this.compareResult.QuerySubText);
+
+    this.http.get<CompareResult>(this.baseUrl + 'stringcomparer',{params: params})
+    .toPromise()
+    .then((result:any) => {
+      this.compareResult.IsValid = result.isValid;
+      this.compareResult.Description = result.description.join();
+    })
+    .catch(error=>
+      {
+        this.compareResult.Description="Unknown error: Please contact admin";
+        this.compareResult.IsValid = false;
+        console.log (error);
+      });
   }
+
 }
 
 interface CompareResult {
   IsValid?: boolean;
   Description?: string;
-  queryText?: string;
-  querySubText?:string;
+  QueryText?: string;
+  QuerySubText?:string;
 }

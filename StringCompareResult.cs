@@ -4,7 +4,8 @@ namespace StringComparerApplication
 {
     public class StringCompareResult
     {
-        public bool isValid { get; set; }
-        public List<string> Result { get; set; }
+        public bool IsValid { get; set; }
+        public List<string> Description { get; set; }
+
     }
 }

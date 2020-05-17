@@ -13,6 +13,11 @@ code {
 {
   color: #a94442;
 }
+.required
+{
+  color: red;
+  font-weight: bold;
+}
 
 .btn-primary {
   color: #fff;
