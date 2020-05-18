@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringComparerApplicationTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringComparerApplication", "StringComparerApplication.csproj", "{5A9375C2-BF5C-4548-8038-E51EB5B14464}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DECCD300-98FB-11EA-B2FD-373AD2CF1305}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +46,5 @@ Global
 		{5A9375C2-BF5C-4548-8038-E51EB5B14464}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EF4E917E-8C56-4157-87B6-21942593428F} = {DECCD300-98FB-11EA-B2FD-373AD2CF1305}
 	EndGlobalSection
 EndGlobal
